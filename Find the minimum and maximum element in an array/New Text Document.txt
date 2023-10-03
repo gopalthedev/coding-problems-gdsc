@@ -1,1 +1,44 @@
-add you code file to this folder
+#include <iostream>
+using namespace std;
+#include <climits> // For INT_MAX and INT_MIN
+
+using namespace std;
+
+void findMaxMin(int arr[], int size, int &max_val, int &min_val) {
+    if (size == 0) {
+        // Handle the case of an empty array
+        max_val = INT_MIN;
+        min_val = INT_MAX;
+        return;
+    }
+
+    // Initialize variables to store the maximum and minimum values
+    max_val = arr[0];
+    min_val = arr[0];
+
+    // Iterate through the array to find the maximum and minimum values
+    for (int i = 1; i < size; i++) {
+        if (arr[i] > max_val) {
+            max_val = arr[i];
+        }
+        if (arr[i] < min_val) {
+            min_val = arr[i];
+        }
+    }
+}
+
+int main() {
+    int arr[] = {5, 2, 9, 1, 5, 6};
+    int size = sizeof(arr) / sizeof(arr[0]);
+    int max_val, min_val;
+
+    findMaxMin(arr, size, max_val, min_val);
+
+    cout << "Maximum value: " << max_val << endl;
+    cout << "Minimum value: " << min_val << endl;
+
+    return 0;
+}
+
+
+
