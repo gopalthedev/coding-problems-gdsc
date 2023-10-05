@@ -1,1 +1,41 @@
 add you code file to this folder
+#include <iostream>
+using namespace std;
+
+void moveNegativeElements(int arr[], int n) {
+    int left = 0;          // Pointer starting from the beginning of the array
+    int right = n - 1;     // Pointer starting from the end of the array
+
+    while (left <= right) {
+        if (arr[left] < 0 && arr[right] < 0) {
+            // Both elements are negative, move the left pointer to the right
+            left++;
+        } else if (arr[left] >= 0 && arr[right] < 0) {
+            // Left element is positive, right element is negative, swap them
+            swap(arr[left], arr[right]);
+            left++;
+            right--;
+        } else if (arr[left] >= 0 && arr[right] >= 0) {
+            // Both elements are positive, move the right pointer to the left
+            right--;
+        } else {
+            // Left element is negative, right element is positive, move both pointers
+            left++;
+            right--;
+        }
+    }
+}
+
+int main() {
+    int arr[] = {-12, 11, -13, -5, 6, -7, 5, -3, -6};
+    int n = sizeof(arr) / sizeof(arr[0]);
+
+    moveNegativeElements(arr, n);
+
+    cout << "Array after moving negative elements to one side: ";
+    for (int i = 0; i < n; i++) {
+        cout << arr[i] << " ";
+    }
+
+    return 0;
+}
